@@ -101,7 +101,7 @@
 
 - (void)dojishi {
     if (_sec >= 1) {
-        [_getBtn setTitle:[NSString stringWithFormat:@"%ds", _sec] forState:UIControlStateNormal];
+        [_getBtn setTitle:[NSString stringWithFormat:@"%lds", (long)_sec] forState:UIControlStateNormal];
         _sec--;
     }else {
         [_getBtn setBackgroundColor:[UIColor orangeColor]];

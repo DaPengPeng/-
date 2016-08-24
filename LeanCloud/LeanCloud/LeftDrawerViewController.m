@@ -49,10 +49,22 @@
 }
 - (void)showCurrentPage {
     if (_isInLog) {
-        _userName.text = [AVUser currentUser].username;//还有图标
+        _userName.text = [AVUser currentUser].username;
+        //还有图标,分两种
+        if ([AVUser currentUser][@"avatarFileID"] != nil) {
+            [AVFile getFileWithObjectId:[AVUser currentUser][@"avatarFileID"] withBlock:^(AVFile *file, NSError *error) {
+                
+                [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    [_userIcon setImage:[UIImage imageWithData:data]];
+                }];
+            }];
+        }else {
+            [_userIcon setImage:[UIImage imageNamed:@"ico-touxiang@3x.png"]];
+        }
         
     }else {
         _userName.text = @"登录轻松快递";
+        [_userIcon setImage:[UIImage imageNamed:@"ico-touxiang@3x.png"]];
         
     }
 }

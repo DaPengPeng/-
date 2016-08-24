@@ -153,6 +153,8 @@
 
     _phoneNumber.text = noti.userInfo[@"phone"];
     _passWord.text = noti.userInfo[@"password"];
+    _loginBtn.userInteractionEnabled = YES;
+    [_loginBtn setBackgroundColor:[UIColor colorWithRed:0.40 green:0.86 blue:0.42 alpha:1.00]];
 }
 
 
