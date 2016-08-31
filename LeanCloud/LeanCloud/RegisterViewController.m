@@ -65,11 +65,11 @@
 - (void)changeColor {
     if (_phoneNumber.text.length !=11 || [_password.text isEqualToString:@""] || [_verify.text isEqualToString:@""]) {
         [_nextBtn setBackgroundColor:[UIColor grayColor]];
-        _nextBtn.userInteractionEnabled = NO;
+        _nextBtn.enabled = NO;
     }else {
         
         [_nextBtn setBackgroundColor:[UIColor colorWithRed:0.40 green:0.86 blue:0.42 alpha:1.00]];
-        _nextBtn.userInteractionEnabled = YES ;
+        _nextBtn.enabled = YES ;
     }
     
 }
@@ -81,7 +81,7 @@
     
     [AVOSCloud requestSmsCodeWithPhoneNumber:_phoneNumber.text callback:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            [self setTimer];
+            [self setTimer];    //获取成功后进行计时
         }else {
             NSLog(@"%@",error);
         }
@@ -101,7 +101,9 @@
 
 - (void)dojishi {
     if (_sec >= 1) {
-        [_getBtn setTitle:[NSString stringWithFormat:@"%lds", (long)_sec] forState:UIControlStateNormal];
+//        [UIView animateWithDuration:.1 animations:^{}];
+        
+            [_getBtn setTitle:[NSString stringWithFormat:@"%lds", (long)_sec] forState:UIControlStateNormal];
         _sec--;
     }else {
         [_getBtn setBackgroundColor:[UIColor orangeColor]];

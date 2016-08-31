@@ -173,7 +173,7 @@
     
     //先判断用户是否已经设置头像
     NSString *avatarFileID = [AVUser currentUser][@"avatarFileID"];
-    if (avatarFileID != nil) {
+    if (avatarFileID != nil) {  //这一步可以优化
         [AVFile getFileWithObjectId:avatarFileID withBlock:^(AVFile *file, NSError *error) {
             
             [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
@@ -185,7 +185,7 @@
         [self.icon setImage:[UIImage imageNamed:@"ico-touxiang@3x.png"]];
         
     }
-//    NSLog(@"懒加载是在用不上打印一下%@", NSStringFromCGRect(self.icon.frame));
+
     
     
     

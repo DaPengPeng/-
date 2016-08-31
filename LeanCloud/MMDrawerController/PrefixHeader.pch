@@ -19,5 +19,6 @@
 #import "UIImageView+WebCache.h"
 #import "UILabel+Extension.h"
 #import "MyNavigationController.h"
+#import "AFNetworking.h"
 
 #endif /* PrefixHeader_pch */

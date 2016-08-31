@@ -10,30 +10,51 @@
 #import "LeftDrawerViewController.h"
 #import "MMDrawerController.h"
 #import "TableViewCell.h"
+#import "QueryViewController.h"
 
 @interface MainPageViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong)UIBarButtonItem *queryItem;
 
 @end
 
 @implementation MainPageViewController {
 
 
-    
-
 }
 
+- (UIBarButtonItem *)queryItem {
+    if (!_queryItem) {
+        _queryItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(pushQueryView)];
+    }
+    return _queryItem;
+}
+
+- (void)pushQueryView {
+    
+    QueryViewController *queryVC = [[QueryViewController alloc]init];
+    [self.navigationController pushViewController:queryVC animated:YES];
+    
+}
+
+
+
+
+
+#pragma mark - viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"轻松快递";
-    
+    self.navigationItem.rightBarButtonItem = self.queryItem;
     [self changeRootView];
     
 }
 
 - (void)changeRootView { //更改window的根视图
     
-    UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:self];
+    UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:self];  //这个方法自创的，会不会有什么问题
+    
     LeftDrawerViewController *leftDrawer = [[LeftDrawerViewController alloc]init];
     
     MMDrawerController *mm = [[MMDrawerController alloc]initWithCenterViewController:nvc leftDrawerViewController:leftDrawer];

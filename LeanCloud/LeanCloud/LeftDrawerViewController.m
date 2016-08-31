@@ -11,8 +11,8 @@
 #import "UserViewController.h"
 
 @interface LeftDrawerViewController ()
-@property UIImageView *icon;
-@property UILabel *name;
+//@property (nonatomic, strong)UIImageView *icon;
+
 
 @end
 
@@ -27,14 +27,13 @@
 
 }
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     UIImage *bg = [UIImage imageNamed:@"i_2bg@2x.jpg"];
     self.view.layer.contents = (id)bg.CGImage;
+    
+//    [self.view addSubview:self.icon];
     
     AVUser *user = [AVUser currentUser];
     
@@ -92,6 +91,8 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    
 }
 
 #pragma mark - 登入登出通知
